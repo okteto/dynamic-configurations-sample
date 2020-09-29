@@ -1,0 +1,27 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configuration
+  labels:
+    app: configuration
+spec:
+  selector:
+    matchLabels:
+      app: configuration
+  template:
+    metadata:
+      labels:
+        app: configuration
+    spec:
+      containers:
+      - name: container
+        image: k8s.gcr.io/busybox
+        command: [ "/bin/sh", "-c", "cat /etc/config/config.yaml && echo && tail -f /dev/null" ]
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+      volumes:
+      - name: config-volume
+        configMap:
+          name: config-app

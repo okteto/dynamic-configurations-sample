@@ -1,0 +1,6 @@
+# these two come from the pipeline environment
+commit: $OKTETO_GIT_COMMIT
+branch: $OKTETO_GIT_BRANCH
+
+# this comes from an okteto secret
+name:   $MY_NAME
