@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app
+  name: configuration
   labels:
-    app: app
+    app: configuration
 spec:
   selector:
     matchLabels:
-      app: app
+      app: configuration
   template:
     metadata:
       labels:
-        app: app
+        app: configuration
     spec:
       containers:
       - name: container
         image: k8s.gcr.io/busybox
-        command: [ "/bin/sh", "-c", "cat /etc/config/config.yaml" ]
+        command: [ "/bin/sh", "-c", "cat /etc/config/config.yaml && echo && tail -f /dev/null" ]
         volumeMounts:
         - name: config-volume
           mountPath: /etc/config
