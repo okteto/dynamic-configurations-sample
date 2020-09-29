@@ -1,0 +1,3 @@
+deploy:
+- envsubst < config.template.yaml > config.yaml
+- kustomize apply -k .
