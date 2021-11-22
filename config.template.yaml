@@ -2,5 +2,5 @@
 commit: $OKTETO_GIT_COMMIT
 branch: $OKTETO_GIT_BRANCH
 
-# this comes from an okteto secret
+# this comes from an okteto variable
 name:   $MY_NAME
