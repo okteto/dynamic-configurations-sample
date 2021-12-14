@@ -1,0 +1,24 @@
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@1.13.10
+
+    - name: Login
+      uses: okteto/login@1.14.1
+      with:
+        token: ${{ secrets.OKTETO_TOKEN }}
+
+    - name: Deploy Application
+      uses: okteto/pipeline@1.14.1
+      env:
+        NAME: ${{ secrets.NAME }}
+      with:
+        namespace: ifbyol
+        variables: "MY_NAME=$NAME"
