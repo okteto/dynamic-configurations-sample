@@ -1,6 +1,6 @@
-# these two come from the pipeline environment
+# These two values come from the okteto environment
 commit: $OKTETO_GIT_COMMIT
 branch: $OKTETO_GIT_BRANCH
 
-# this comes from an okteto secret
+# This value comes from an okteto variable
 name:   $MY_NAME
